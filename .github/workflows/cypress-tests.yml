@@ -3,10 +3,10 @@ name: Run Cypress Tests
 on:
   push:
     branches:
-      - master   # Run tests on push to the master branch
+      - master
   pull_request:
     branches:
-      - master   # Run tests on pull requests to the master branch
+      - master
 
 jobs:
   cypress-run:
@@ -25,9 +25,9 @@ jobs:
         run: npm install
 
       - name: Run Cypress tests
-        run: npx cypress run --spec "cypress/e2e/DemoTest.cy.js"
+        run: npx cypress run --spec "cypress/e2e/MyFirstTest.cy.js"
 
-      - name: Upload Cypress screenshots and videos
+      - name: Upload Cypress screenshots, videos, and HTML report
         if: always()
         uses: actions/upload-artifact@v2
         with:
@@ -35,3 +35,4 @@ jobs:
           path: |
             cypress/screenshots
             cypress/videos
+            cypress/reports/*.html
