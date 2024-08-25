@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Run Cypress tests
-        run: npx cypress run --spec "cypress/e2e/MyFirstTest.cy.js"
+        run: npx cypress run --spec "cypress/e2e/DemoTest.cy.js"
 
       - name: Upload Cypress screenshots and videos
         if: always()
