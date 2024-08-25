@@ -1,13 +1,12 @@
-name: Cypress Test Automation
+name: Run Cypress Tests
 
-# Controls when the workflow will run
 on:
   push:
     branches:
-      - master   # Run on push to the master branch
+      - master   # Run tests on push to the master branch
   pull_request:
     branches:
-      - master   # Run on pull requests to the master branch
+      - master   # Run tests on pull requests to the master branch
 
 jobs:
   cypress-run:
@@ -20,13 +19,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Specify Node.js version
+          node-version: '14'
 
       - name: Install dependencies
         run: npm install
 
       - name: Run Cypress tests
-        run: npx cypress run
+        run: npx cypress run --spec "cypress/e2e/MyFirstTest.cy.js"
 
       - name: Upload Cypress screenshots and videos
         if: always()
