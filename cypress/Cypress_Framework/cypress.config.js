@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
@@ -8,7 +7,9 @@ module.exports = defineConfig({
       require('cypress-mochawesome-reporter/plugin')(on);
       return config;
     },
-    
+    // Increased page load timeout to 2 minutes (120000 milliseconds)
+    pageLoadTimeout: 120000,  // You can adjust this if needed
+    specPattern: 'cypress/e2e/**/*.cy.js',
     reporterOptions: {
       reportDir: 'cypress/reports',
       overwrite: false,
@@ -19,14 +20,5 @@ module.exports = defineConfig({
     },
     screenshotOnRunFailure: true,
     screenshotsFolder: 'cypress/screenshots',
-=======
-const { defineConfig } = require("cypress");
-
-module.exports = defineConfig({
-  e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
->>>>>>> 395332f (Updated Cypress config for report generation and other changes)
   },
 });
