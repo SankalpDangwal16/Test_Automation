@@ -25,11 +25,11 @@ jobs:
         run: npm install
 
       - name: Run Cypress tests
-        run: npx cypress run --spec "cypress/e2e/MyFirstTest.cy.js"
+        run: npx cypress run --spec "cypress/e2e/DemoTest.cy.js"
 
       - name: Upload Cypress screenshots, videos, and HTML report
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # <-- Updated from v2 to v3
         with:
           name: cypress-artifacts
           path: |
