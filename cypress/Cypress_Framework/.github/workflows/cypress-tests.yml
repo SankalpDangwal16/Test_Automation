@@ -14,22 +14,22 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: '14'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run Cypress tests and generate report
-        run: npm test  # <-- This runs the "test" script from package.json
+      - name: Run Cypress tests
+        run: npx cypress run --spec "cypress/e2e/DemoTest.cy.js"
 
-      - name: Upload Cypress artifacts (screenshots, videos, and HTML report)
+      - name: Upload Cypress screenshots, videos, and HTML report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3  # Ensure using v3 here
         with:
           name: cypress-artifacts
           path: |
